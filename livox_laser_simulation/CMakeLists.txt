@@ -48,7 +48,7 @@ catkin_package(
 
 add_library(livox_laser_simulation SHARED src/livox_points_plugin.cpp src/livox_ode_multiray_shape.cpp)
 target_link_libraries(livox_laser_simulation ${catkin_LIBRARIES} RayPlugin)
-# Wait till custom messages/services/actions from current and other package are built
-add_dependencies(livox_laser_simulation ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# Wait till custom messages from current package are built
+add_dependencies(livox_laser_simulation livox_laser_simulation_generate_messages_cpp)
 
 target_link_libraries(livox_laser_simulation libprotobuf.so.9)
